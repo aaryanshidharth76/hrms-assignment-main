@@ -32,30 +32,30 @@ export const ToastProvider = ({ children }) => {
                             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                             className="pointer-events-auto"
                         >
-                            <div className={`px-6 py-4 rounded-2xl shadow-2xl border flex items-center gap-4 min-w-[300px] backdrop-blur-md ${toast.type === 'success'
-                                    ? 'bg-emerald-50/90 dark:bg-emerald-900/90 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-100'
-                                    : toast.type === 'error'
-                                        ? 'bg-rose-50/90 dark:bg-rose-900/90 border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-100'
-                                        : 'bg-white/90 dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100'
+                            <div className={`px-5 py-3.5 rounded-xl shadow-elevated border flex items-center gap-3 min-w-[280px] ${toast.type === 'success'
+                                ? 'bg-white dark:bg-gray-800 border-emerald-200 dark:border-emerald-800/50 text-gray-800 dark:text-gray-100'
+                                : toast.type === 'error'
+                                    ? 'bg-white dark:bg-gray-800 border-rose-200 dark:border-rose-800/50 text-gray-800 dark:text-gray-100'
+                                    : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-100'
                                 }`}>
-                                <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${toast.type === 'success' ? 'bg-emerald-500 text-white' :
-                                        toast.type === 'error' ? 'bg-rose-500 text-white' :
-                                            'bg-primary-500 text-white'
+                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${toast.type === 'success' ? 'bg-emerald-500 text-white' :
+                                    toast.type === 'error' ? 'bg-rose-500 text-white' :
+                                        'bg-primary-500 text-white'
                                     }`}>
                                     {toast.type === 'success' ? (
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                        <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
                                     ) : toast.type === 'error' ? (
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                        <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                     ) : (
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                        <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                     )}
                                 </div>
-                                <p className="font-bold text-sm flex-1">{toast.message}</p>
+                                <p className="font-medium text-sm flex-1">{toast.message}</p>
                                 <button
                                     onClick={() => removeToast(toast.id)}
-                                    className="p-1 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg transition-colors"
+                                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                                 >
-                                    <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
                             </div>
                         </motion.div>

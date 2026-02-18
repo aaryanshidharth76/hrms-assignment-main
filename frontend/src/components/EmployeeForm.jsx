@@ -69,12 +69,16 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
         }
     };
 
+    const inputBaseClass = "w-full px-4 py-2.5 rounded-lg border bg-gray-50 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors text-sm";
+    const inputNormalBorder = "border-gray-200 dark:border-gray-700";
+    const inputErrorBorder = "border-red-300 bg-red-50 dark:bg-red-900/20";
+
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 gap-4">
                 {/* Employee ID */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                         Employee ID
                     </label>
                     <input
@@ -83,17 +87,16 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
                         value={formData.employee_id}
                         onChange={handleChange}
                         placeholder="e.g., EMP001"
-                        className={`w-full px-4 py-2.5 rounded-lg border dark:bg-slate-800 dark:text-white ${errors.employee_id ? 'border-red-300 bg-red-50 dark:bg-red-900/20' : 'border-slate-200 dark:border-slate-700'
-                            } focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors`}
+                        className={`${inputBaseClass} ${errors.employee_id ? inputErrorBorder : inputNormalBorder}`}
                     />
                     {errors.employee_id && (
-                        <p className="text-red-500 text-xs mt-1">{errors.employee_id}</p>
+                        <p className="text-red-500 text-xs mt-1 font-medium">{errors.employee_id}</p>
                     )}
                 </div>
 
                 {/* Full Name */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                         Full Name
                     </label>
                     <input
@@ -102,17 +105,16 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
                         value={formData.full_name}
                         onChange={handleChange}
                         placeholder="e.g., John Doe"
-                        className={`w-full px-4 py-2.5 rounded-lg border dark:bg-slate-800 dark:text-white ${errors.full_name ? 'border-red-300 bg-red-50 dark:bg-red-900/20' : 'border-slate-200 dark:border-slate-700'
-                            } focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors`}
+                        className={`${inputBaseClass} ${errors.full_name ? inputErrorBorder : inputNormalBorder}`}
                     />
                     {errors.full_name && (
-                        <p className="text-red-500 text-xs mt-1">{errors.full_name}</p>
+                        <p className="text-red-500 text-xs mt-1 font-medium">{errors.full_name}</p>
                     )}
                 </div>
 
                 {/* Email */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                         Email Address
                     </label>
                     <input
@@ -121,25 +123,23 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="e.g., john@company.com"
-                        className={`w-full px-4 py-2.5 rounded-lg border dark:bg-slate-800 dark:text-white ${errors.email ? 'border-red-300 bg-red-50 dark:bg-red-900/20' : 'border-slate-200 dark:border-slate-700'
-                            } focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors`}
+                        className={`${inputBaseClass} ${errors.email ? inputErrorBorder : inputNormalBorder}`}
                     />
                     {errors.email && (
-                        <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                        <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>
                     )}
                 </div>
 
                 {/* Department */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                         Department
                     </label>
                     <select
                         name="department"
                         value={formData.department}
                         onChange={handleChange}
-                        className={`w-full px-4 py-2.5 rounded-lg border dark:bg-slate-800 dark:text-white ${errors.department ? 'border-red-300 bg-red-50 dark:bg-red-900/20' : 'border-slate-200 dark:border-slate-700'
-                            } focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors bg-white`}
+                        className={`${inputBaseClass} appearance-none ${errors.department ? inputErrorBorder : inputNormalBorder}`}
                     >
                         <option value="">Select department</option>
                         {departments.map(dept => (
@@ -147,7 +147,7 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
                         ))}
                     </select>
                     {errors.department && (
-                        <p className="text-red-500 text-xs mt-1">{errors.department}</p>
+                        <p className="text-red-500 text-xs mt-1 font-medium">{errors.department}</p>
                     )}
                 </div>
             </div>
@@ -159,7 +159,7 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
                         whileTap={{ scale: 0.98 }}
                         type="button"
                         onClick={onCancel}
-                        className="px-6 py-2.5 text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                        className="px-5 py-2.5 text-gray-600 dark:text-gray-400 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                     >
                         Cancel
                     </motion.button>
@@ -169,7 +169,7 @@ const EmployeeForm = ({ onSubmit, onCancel, loading = false }) => {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={loading}
-                    className="px-6 py-2.5 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2 shadow-lg shadow-primary-500/25"
+                    className="px-6 py-2.5 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2 shadow-md shadow-primary-500/20"
                 >
                     {loading ? (
                         <>

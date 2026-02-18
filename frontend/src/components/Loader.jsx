@@ -15,9 +15,9 @@ const Loader = ({ fullScreen = false }) => {
 
     if (fullScreen) {
         return (
-            <div className="fixed inset-0 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-sm z-[100] flex flex-col items-center justify-center">
+            <div className="fixed inset-0 bg-gray-50/80 dark:bg-gray-950/80 backdrop-blur-sm z-[100] flex flex-col items-center justify-center">
                 <motion.div
-                    className="w-16 h-16 border-4 border-primary-200 dark:border-primary-900 border-t-primary-600 rounded-full"
+                    className="w-14 h-14 border-4 border-primary-200 dark:border-primary-900 border-t-primary-600 rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                 />
@@ -25,9 +25,9 @@ const Loader = ({ fullScreen = false }) => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="mt-4 text-slate-600 dark:text-slate-400 font-bold tracking-wide"
+                    className="mt-4 text-gray-600 dark:text-gray-400 font-semibold tracking-wide text-sm"
                 >
-                    Loading HRMS Lite...
+                    Loading PeopleDesk...
                 </motion.p>
                 <AnimatePresence>
                     {showColdStartMessage && (
@@ -37,10 +37,13 @@ const Loader = ({ fullScreen = false }) => {
                             exit={{ opacity: 0 }}
                             className="mt-6 max-w-sm text-center px-4"
                         >
-                            <p className="text-sm text-slate-500 dark:text-slate-400">
-                                ☕ Waking up the server...
-                            </p>
-                            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                            <div className="flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Waking up the server...
+                            </div>
+                            <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                                 First load may take up to 30 seconds on free hosting.
                             </p>
                         </motion.div>
@@ -64,11 +67,11 @@ const Loader = ({ fullScreen = false }) => {
 export const TableSkeleton = ({ rows = 5, cols = 4 }) => {
     return (
         <div className="w-full animate-pulse">
-            <div className="bg-slate-50 dark:bg-slate-900/50 h-12 border-b border-slate-200 dark:border-slate-700" />
+            <div className="bg-gray-50 dark:bg-gray-900/50 h-12 border-b border-gray-200 dark:border-gray-700" />
             {[...Array(rows)].map((_, i) => (
-                <div key={i} className="flex border-b border-slate-100 dark:border-slate-800 p-4">
+                <div key={i} className="flex border-b border-gray-50 dark:border-gray-800 p-4">
                     {[...Array(cols)].map((_, j) => (
-                        <div key={j} className="flex-1 h-8 bg-slate-100 dark:bg-slate-800 rounded mx-2" />
+                        <div key={j} className="flex-1 h-8 bg-gray-100 dark:bg-gray-800 rounded mx-2" />
                     ))}
                 </div>
             ))}
