@@ -2,7 +2,14 @@
 
 ## Project: PeopleDesk (formerly HRMS Lite)
 
-**Last Updated:** 2026-02-19 00:50 IST
+**Last Updated:** 2026-02-19 01:10 IST
+
+---
+
+## Live URLs
+- **Frontend:** https://frontend-delta-brown-13.vercel.app
+- **Backend API:** https://peopledesk-api.onrender.com
+- **GitHub:** https://github.com/aaryanshidharth76/hrms-assignment-main (branch: frontend-redesign)
 
 ---
 
@@ -10,21 +17,22 @@
 
 ### Backend
 - **Tech:** FastAPI + Motor (async MongoDB)
-- **Port:** 8000
+- **Port (local):** 8000
 - **Env file:** `backend/.env` (MONGODB_URI, CORS_ORIGINS)
 - **Virtual env:** `backend/venv`
-- **Start command:** `cd backend; .\venv\Scripts\Activate.ps1; uvicorn app.main:app --reload`
+- **Start command (local):** `cd backend; .\venv\Scripts\Activate.ps1; uvicorn app.main:app --reload`
+- **Render start command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 - **DB fix:** `database.py` conditionally uses TLS only for cloud/Atlas URIs
 
 ### Frontend
 - **Tech:** React 18 + Vite + Tailwind CSS + Framer Motion
-- **Port:** 5173
+- **Port (local):** 5173
 - **Env file:** `frontend/.env` (VITE_API_BASE_URL=http://localhost:8000)
+- **Vercel env:** VITE_API_BASE_URL=https://peopledesk-api.onrender.com
 - **Start command:** `cd frontend; npm run dev`
 
 ### Database
-- **MongoDB:** Running locally on port 27017
-- **DB name:** hrms_lite
+- **MongoDB Atlas:** mongodb+srv://aaryanshidharth_db_user:admin123@cluster0.ylvp7td.mongodb.net
 
 ---
 
@@ -54,10 +62,23 @@
 - `frontend/src/pages/Attendance.jsx` - Updated quick mark and history
 - All 8 components (EmployeeForm, EmployeeTable, AttendanceForm, AttendanceTable, Toast, Loader, EmptyState, ErrorBanner)
 
-### Build Status: PASSING (vite build succeeds, dev server running on 5173)
-
 ---
 
-## Pending
-- [ ] Deploy backend to Render
-- [ ] Deploy frontend to Vercel
+## Deployment (2026-02-19)
+
+### Backend -> Render
+- Service name: `peopledesk-api`
+- Root directory: `backend`
+- Runtime: Python 3
+- Build command: `pip install -r requirements.txt`
+- Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+- Env vars: MONGODB_URI (Atlas), CORS_ORIGINS=*
+
+### Frontend -> Vercel
+- Deployed via Vercel CLI
+- Framework: Vite
+- Env var: VITE_API_BASE_URL=https://peopledesk-api.onrender.com
+
+### Notes
+- Render free tier has cold starts (~30 seconds on first request after inactivity)
+- Git credentials switched from Kshitijkb28 to aaryanshidharth76 for push
