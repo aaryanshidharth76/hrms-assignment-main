@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "D:\shared\Reactjs\hrms 2\backend\test_import.py", line 7, in <module>
+    from app.main import app
+  File "D:\shared\Reactjs\hrms 2\backend\app\main.py", line 13, in <module>
+    from .routes import employees, attendance
+  File "D:\shared\Reactjs\hrms 2\backend\app\routes\attendance.py", line 12, in <module>
+    from ..schemas.attendance import AttendanceCreate, AttendanceResponse
+  File "D:\shared\Reactjs\hrms 2\backend\app\schemas\attendance.py", line 17, in <module>
+    class AttendanceCreate(BaseModel):
+    ...<14 lines>...
+        status: AttendanceStatus = Field(..., description="Attendance status")
+  File "C:\Users\dines\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pydantic\_internal\_model_construction.py", line 242, in __new__
+    set_model_fields(cls, config_wrapper=config_wrapper, ns_resolver=ns_resolver)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dines\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pydantic\_internal\_model_construction.py", line 566, in set_model_fields
+    fields, class_vars = collect_model_fields(cls, config_wrapper, ns_resolver, typevars_map=typevars_map)
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\dines\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pydantic\_internal\_fields.py", line 363, in collect_model_fields
+    field_info = FieldInfo_.from_annotated_attribute(ann_type, assigned_value, _source=AnnotationSource.CLASS)
+  File "C:\Users\dines\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pydantic\fields.py", line 407, in from_annotated_attribute
+    raise PydanticUserError(
+    ...<3 lines>...
+    )
+pydantic.errors.PydanticUserError: Error when building FieldInfo from annotated attribute. Make sure you don't have any field name clashing with a type annotation.
+
+For further information visit https://errors.pydantic.dev/2.12/u/unevaluable-type-annotation
+FAILED: Error when building FieldInfo from annotated attribute. Make sure you don't have any field name clashing with a type annotation.
+
+For further information visit https://errors.pydantic.dev/2.12/u/unevaluable-type-annotation
